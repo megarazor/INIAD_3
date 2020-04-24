@@ -3,5 +3,5 @@ import matplotlib.pyplot as plt
 
 G= nx.read_edgelist('test.edgelist', nodetype=int)
 
-nx.graph_networkx(G)
+nx.draw_networkx(G)
 plt.show()
