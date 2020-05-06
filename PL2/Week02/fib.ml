@@ -56,14 +56,14 @@ let matrix_mul (m : int list) (n : int list) =
         n0::n1::n2::n3::_ -> [(m0*n0 + m1*n2); (m0*n1 + m1*n3); (m2*n0 + m3*n2); (m2*n1 + m3*n3)]
 ;;
 
-matrix_mul [1;1;1;0] [1;1;1;0];; 
+(* matrix_mul [1;1;1;0] [1;1;1;0];; 
 matrix_mul [1;1;1;0] (matrix_mul [1;1;1;0] [1;1;1;0]);;
 matrix_mul (matrix_mul [1;1;1;0] [1;1;1;0]) (matrix_mul [1;1;1;0] [1;1;1;0]);;
 matrix_mul ([1;1;1;0]) (matrix_mul (matrix_mul [1;1;1;0] [1;1;1;0]) (matrix_mul [1;1;1;0] [1;1;1;0]));;
 
 matrix_mul (matrix_mul [1;1;1;0] [1;1;1;0]) (matrix_mul (matrix_mul [1;1;1;0] [1;1;1;0]) (matrix_mul [1;1;1;0] [1;1;1;0]));;
 matrix_mul [1;1;1;0] (matrix_mul (matrix_mul [1;1;1;0] [1;1;1;0]) (matrix_mul (matrix_mul [1;1;1;0] [1;1;1;0]) (matrix_mul [1;1;1;0] [1;1;1;0])));;
-matrix_mul (matrix_mul (matrix_mul [1;1;1;0] [1;1;1;0]) (matrix_mul [1;1;1;0] [1;1;1;0])) (matrix_mul (matrix_mul [1;1;1;0] [1;1;1;0]) (matrix_mul [1;1;1;0] [1;1;1;0]));;
+matrix_mul (matrix_mul (matrix_mul [1;1;1;0] [1;1;1;0]) (matrix_mul [1;1;1;0] [1;1;1;0])) (matrix_mul (matrix_mul [1;1;1;0] [1;1;1;0]) (matrix_mul [1;1;1;0] [1;1;1;0]));; *)
 
 (* matrix_mul [2;4;9;2] [5;8;1;7];;
 result: 14	44	47	86 *)
@@ -73,9 +73,9 @@ let fib3 n =
   else
     begin
       let rec iter mtrx n' = 
-        if n' <= 1 then mtrx
+        if n' <= 0 then [1;0;0;1]
         else if n' mod 2 = 0 then iter (matrix_mul mtrx mtrx) (n' / 2)
-        else matrix_mul [1;1;1;0] (iter mtrx (n' - 1))
+        else matrix_mul mtrx (iter mtrx (n' - 1))
       in match iter [1;1;1;0] (n - 1) with
         hd::tl -> hd
       | [] -> 0
@@ -87,9 +87,9 @@ let fibm n =
   else
     begin
       let rec iter mtrx n' = 
-        if n' <= 1 then mtrx
+        if n' <= 0 then [1;0;0;1]
         else if n' mod 2 = 0 then iter (matrix_mul mtrx mtrx) (n' / 2)
-        else matrix_mul [1;1;1;0] (iter mtrx (n' - 1))
+        else matrix_mul mtrx (iter mtrx (n' - 1))
       in iter [1;1;1;0] (n - 1)
     end
 ;; 
@@ -120,7 +120,7 @@ fib3 20;;
 fib3 6;;
 fib3 8;; *)
 
-fibm 0;;
+(* fibm 0;;
 fibm 1;;
 fibm 2;;
 fibm 3;;
@@ -140,4 +140,4 @@ fibm 16;;
 fibm 17;;
 fibm 18;;
 fibm 19;;
-fibm 20;;
+fibm 20;; *)
