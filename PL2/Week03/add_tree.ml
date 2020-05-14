@@ -11,6 +11,11 @@ let rec append_bst value tree =
   | Leaf -> Node(value, Leaf, Leaf)
 ;;
 
+
 append_bst 5 (Node(8, Node(3, Node(1, Leaf, Leaf), Leaf), Node(10, Leaf, Leaf)));;
 
 append_bst 0 (Node(8, Node(3, Node(1, Leaf, Leaf), Leaf), Node(10, Leaf, Leaf)));;
+
+(Node(8, Node(3, Node(1, Leaf, Leaf), Leaf), Node(10, Leaf, Leaf)));;
+
+append_bst 1 (Node(8, Node(3, Node(1, Leaf, Leaf), Leaf), Node(10, Leaf, Leaf)));;
