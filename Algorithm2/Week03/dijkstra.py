@@ -1,5 +1,5 @@
 import networkx as nx
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 def get_min(D, X):
     arg_min= -1
@@ -30,6 +30,6 @@ G= nx.read_weighted_edgelist('dij.edgelist', nodetype=int)
 
 print(dijkstra(0, G))
 
-# nx.draw_networkx(G)
+nx.draw_networkx(G)
 
-# plt.show()
+plt.show()
