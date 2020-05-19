@@ -29,13 +29,13 @@ def dijkstra(src, G):
 
 p= 0.01
 
-for i in range(1, 11):
-    print("With n=", i*1000, ", p=", p, ", creating graph ", i, "...", sep="")
-    #Create graph
-    G= nx.fast_gnp_random_graph(i*1000, p)
-    for (u, v) in G.edges():
-        G.edges[u, v]['weight']= random.randint(1, 100)
-    nx.write_weighted_edgelist(G, "random_" + str(i*1000) +  ".edgelist")
+# for i in range(1, 11):
+#     print("With n=", i*1000, ", p=", p, ", creating graph ", i, "...", sep="")
+#     #Create graph
+#     G= nx.fast_gnp_random_graph(i*1000, p)
+#     for (u, v) in G.edges():
+#         G.edges[u, v]['weight']= random.randint(1, 100)
+#     nx.write_weighted_edgelist(G, "random_" + str(i*1000) +  ".edgelist")
 
 for i in range(1, 11):
     #Read & run Dijkstra
