@@ -12,15 +12,16 @@ type instruction =
 | Push of int
 ;;
 
-let compile exp =
-  let rec iter result exp' =
-    match exp' with
-      Number(n) -> result @ [Push(n)]
-    | Binop(op, left, right) when op = '+' -> result @ iter result left @ iter result right @ [Add]
-    | Binop(op, left, right) when op = '-' -> result @ iter result left @ iter result right @ [Sub]
-    | Binop(op, left, right) when op = '*' -> result @ iter result left @ iter result right @ [Mul]
-    | Binop(op, left, right) -> result @ iter result left @ iter result right @ [Div]
-  in iter [] exp
+let compile expr =
+  let stack = MyStack.create () in 
+    let rec iter exp =
+      match exp with
+        Number(n) -> MyStack.push (Push(n)) stack
+      | Binop(op, left, right) when op = '+' -> iter left; iter right; MyStack.push Add stack
+      | Binop(op, left, right) when op = '-' -> iter left; iter right; MyStack.push Sub stack
+      | Binop(op, left, right) when op = '*' -> iter left; iter right; MyStack.push Mul stack
+      | Binop(op, left, right) -> iter left; iter right; MyStack.push Div stack
+    in iter expr; stack
 ;;
 
 (* REPL *)
@@ -89,28 +90,8 @@ let rec repl () =
   try
     let line= read_line () in
       let expr= parse line in
-        let instructions = compile expr in
-          (* let rec test_print ins = 
-            match ins with
-              hd::tl ->
-              begin
-                match hd with
-                    Push(n) -> Printf.printf "Push %d; " n; test_print tl
-                  | Add -> Printf.printf "Add; "; test_print tl
-                  | Sub -> Printf.printf "Sub; "; test_print tl
-                  | Mul -> Printf.printf "Mul; "; test_print tl
-                  | _ -> Printf.printf "Div; "; test_print tl
-              end
-            | [] -> Printf.printf "\n"; ()
-          in test_print instructions; *)
-          let stack = MyStack.create () in
-            let rec push_all exp stk = 
-              match exp with
-                hd::tl -> MyStack.push hd stk; push_all tl stk
-              | [] -> () 
-            in push_all instructions stack;
-            print_int (eval stack); Printf.printf "\n"; repl ()
-
+        let stack= compile expr in
+          print_int (eval stack); Printf.printf "\n"; repl ()
   with
     ZeroDivision -> print_endline "ERROR: division by zero"; repl ()
   | SyntaxError -> print_endline "ERROR: syntax error"; repl ()
