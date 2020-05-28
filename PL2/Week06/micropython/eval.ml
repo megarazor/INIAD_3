@@ -21,6 +21,17 @@ let rec eval_expr env expr =
           | IntValue(i1), IntValue(i2) -> IntValue(i1 - i2)
           | _ -> failwith "type error"
         end
+      | MulOp ->
+        begin
+          match v1, v2 with
+          | IntValue(i1), IntValue(i2) -> IntValue(i1 * i2)
+          | StrValue(s), IntValue(i) -> 
+              let rec iter str num = 
+                if num < 1 then "" 
+                else str ^ (iter str (num - 1))
+              in StrValue(iter s i)
+          | _ -> failwith "type error"
+        end
       | EqOp -> BoolValue(v1 = v2)
       | NeqOp -> BoolValue(v1 <> v2)
     end

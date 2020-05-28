@@ -9,11 +9,13 @@ open Syntax
 %token LPAREN RPAREN
 %token ASSIGN COLON
 %token PLUS MINUS EQUAL NOTEQUAL
+%token ASTERISK
 %token NEWLINE INDENT DEDENT
 %token EOF
 
 %nonassoc EQUAL NOTEQUAL
 %left PLUS MINUS
+%left ASTERISK
 
 %start prog
 %type  <Syntax.pyprog> prog
@@ -45,6 +47,8 @@ expr: expr PLUS expr
         { BinopExpr(EqOp, $1, $3) }
     | expr NOTEQUAL expr
         { BinopExpr(NeqOp, $1, $3) }
+    | expr ASTERISK expr
+        { BinopExpr(MulOp, $1, $3) }
     | LPAREN expr RPAREN
         { $2 }
     | IDENT
