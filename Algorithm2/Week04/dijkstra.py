@@ -4,12 +4,10 @@ import matplotlib.pyplot as plt
 def get_min(D, X):
     arg_min= -1
     min_value= float('inf')
-
-    for i in range(len(D)):
+    for i in X:
         if D[i] < min_value:
-            if i in X:
-                arg_min= i
-                min_value= D[i]
+            arg_min= i
+            min_value= D[i]
     return arg_min
 
 def dijkstra(src, G):
