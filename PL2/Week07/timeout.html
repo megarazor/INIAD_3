@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Closure Example</title>
+<meta charset="utf-8">
+</head>
+<body>
+    <pre id="disp"></pre>
+    <script type="text/javascript">
+        var disp = document.getElementById('disp');
+        for (var i = 0; i < 10; i++) {
+            console.log("bruh", i);
+            let new_i = i;
+            setTimeout(function() {
+                disp.textContent += (new_i + " seconds passed.\n");
+            }, new_i*1000);
+        }
+    </script>
+</body>
+</html>
