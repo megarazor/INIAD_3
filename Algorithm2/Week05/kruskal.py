@@ -24,6 +24,8 @@ G= nx.read_weighted_edgelist('kru.edgelist', nodetype=int)
 
 H= kruskal(G)
 
-nx.draw_networkx(H)
+print(H.edges)
+
+nx.draw_networkx(G)
 
 plt.show()
