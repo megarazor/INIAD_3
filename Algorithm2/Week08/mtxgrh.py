@@ -18,7 +18,21 @@ def graph_to_matrix(G):
             A[:,i]= A[:,i] / n
     return A
 
-G= nx.read_edgelist('pr.edgelist', create_using=nx.DiGraph(), nodetype=int)
+def update(G, v, d, k):
+    n= nx.number_of_nodes(G)
+    A= graph_to_matrix(G)
+    J= np.copy(A)
+    for i in range(n):
+        J[:,i]= J[:,i] * 0 + 1/n
+    Mg= d * A  + (1 - d) * J
+    for i in range(k - 1):
+        Mg= Mg * Mg
+    Mg= Mg * v
+    return Mg
 
-A= graph_to_matrix(G)
-print(A)
+G= nx.read_edgelist('pr.edgelist', create_using=nx.DiGraph(), nodetype=int)
+n= nx.number_of_nodes(G)
+v= np.ones((n, 1))/n
+
+print("My PageRank: ", update(G, v, 0.85, 30))
+print("Networkx PageRank: ", nx.pagerank(G, alpha=0.85))
