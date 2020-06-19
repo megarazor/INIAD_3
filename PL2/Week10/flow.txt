@@ -1,0 +1,10 @@
+Shift INT 3
+Reduce INT 3 -> expr
+Shift +
+Shift INT 5
+Reduce INT 5 -> expr
+Shift *
+Shift INT 8
+Reduce INT 8 -> expr
+Reduce expr * expr -> expr
+Reduct expr + expr -> expr
