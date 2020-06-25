@@ -31,10 +31,10 @@ h0= np.ones((n, 1))
 
 aut_score, hub_score= HITS_update(G, h0, 215)
 
-print(aut_score, "\n\n", hub_score)
+print("My HITS: \n", aut_score, "\n\n", hub_score)
 
 nstart= {0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: 1, 10: 1, 11: 1}
 
 nx_hub, nx_aut= nx.hits(G, nstart=nstart)
 
-print(nx_aut, "\n\n", nx_hub)
+print("NetworkX's HITS: \n",nx_aut, "\n\n", nx_hub)
