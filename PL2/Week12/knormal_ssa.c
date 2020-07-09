@@ -40,19 +40,19 @@ int phi(int a, int b) {
 // SSA form
 int foo_ssa(int n0) {
     int sum0 = 0;
-    int sum1, sum2, sum3, n1, n2;
+    int sum1, sum2, sum3, sum4, n1, n2;
 
-    while(n2 = phi(n0, n1), sum3 = phi(sum0, sum3), n2 > 0) {
+    while(n2 = phi(n0, n1), sum4 = phi(sum0, sum3), n2 > 0) {
         int tmp1 = n2 % 2;
         int tmp2 = n2 * n2;
         if (tmp1 == 0) {
-            sum1 = sum0 + tmp2;
+            sum1 = sum4 + tmp2;
         }
         else {
-            sum2 = sum0 - tmp2;
+            sum2 = sum4 - tmp2;
         }
         sum3 = phi(sum1, sum2);
-        n1 = n0 - 1;
+        n1 = n2 - 1;
     }
     return phi(sum0, sum3);
 }
