@@ -17,7 +17,7 @@ b2: %edi
 c2: %esi
 c:  %eax // Return value
 */
-int foo(%edi /* int a */, %esi /* int b */){
+int foo(int %edi, int %esi){
     %eax = %edi * %edi;
     %edi = %esi * %esi;
     %esi = %eax + %edi;
