@@ -17,10 +17,12 @@ b2: %edi
 c2: %esi
 c:  %eax // Return value
 */
+// Answer:
+/*
 int foo(int %edi, int %esi){
     %eax = %edi * %edi;
     %edi = %esi * %esi;
     %esi = %eax + %edi;
     %eax = sqrt(%eax);
     return %eax;
-}
+} */
