@@ -1,6 +1,9 @@
 # Algorithm2 class
 *.edgelist
 
+# ArchitectureTheory2 class
+ArchitectureTheory2
+
 # Virtual environment files #
 heroku_env
 
