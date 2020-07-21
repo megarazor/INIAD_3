@@ -1,8 +1,7 @@
-let rec string n str =
-  if n <= 0 then "" else str ^ string (n - 1) str
-;;
-
 let pyramid rows =
+  let rec string n str =
+    if n <= 0 then "" else str ^ string (n - 1) str
+  in
   let rec draw n row_count row_num =
     if row_count <= row_num then
       let asterisk = (string n "*") in
