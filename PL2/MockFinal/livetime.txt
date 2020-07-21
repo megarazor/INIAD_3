@@ -1,0 +1,9 @@
+(4) List up all live variables (variables within liveness duration) at the point of # Here! in the following program
+
+a = b + c
+d = e + f
+# Here!
+g = b + f
+print(d)
+
+Answer: d, b, f
