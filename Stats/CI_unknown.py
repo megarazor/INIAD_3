@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.stats as st
 
-x= np.array([5,6,7,8,9])
+x= np.array([10,12,14,15,16,17])
 
 #Sample size
 n= x.size
