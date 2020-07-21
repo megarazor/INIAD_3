@@ -1,0 +1,3 @@
+The original solution does not work because the 'for' loop with i runs and finishes with i=10 in no time. When the function inside setTimeout is called, it uses the i outside of its function scope (because i was declared with 'var', making it accessible even from inner function), and because of the closure it gets at the time it starts, i used by the function is always 10.
+
+With my implementation, 'let new_i = i;' is only effective in the scope of the current 'for' loop. When i increases, we have a new new_i in the new scope of the loop, unlike using 'var'. So, in that scope of the loop, function called by setTimeout always uses the exact new_i of the loop and displays the time from 0 to 9 seconds correctly.
