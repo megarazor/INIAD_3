@@ -9,7 +9,17 @@ int fact(int n)
     return tmp3;
 }
 
-// Allocation, 64x
+// Allocation, 64x without save/restore
+int fact(int %rdi)
+{
+    %rax = %rdi - 1;
+    %rsi = fact(%rax);
+    %rax = %rdi * %rsi;
+    return %rax;
+}
+
+// Answer Allocation, 64x 
+
 int fact(int %rdi)
 {
     Save(x, %rdi);
