@@ -1,0 +1,9 @@
+// Original
+x = x + b;
+y = x + b;
+y = x + b;
+
+// SSA
+x1 = x0 + b;
+y0 = x1 + b;
+y1 = y0;
