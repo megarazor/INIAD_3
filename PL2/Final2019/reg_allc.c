@@ -12,16 +12,6 @@ int fact(int n)
 // Allocation, 64x
 int fact(int %rdi)
 {
-    %rax = %rdi - 1;
-    %rsi = fact(%rax);
-    %rax = %rdi * %rsi;
-    return %rax;
-}
-
-// Answer?
-
-int fact(int %rdi)
-{
     Save(x, %rdi);
     %rdi = %rdi - 1;
     %rax = fact(%rdi);
