@@ -1,7 +1,7 @@
-let count= ref 0;;
+let count= 0;;
 
 let grass () =
-  String.make ref count '*'
+  String.make count '*'
 ;;
 
 grass();;grass();;grass();;grass();;grass();;
