@@ -5,11 +5,11 @@ from scipy.stats import t
 # Test if population mean is mu_0 or not under the significance level of 5%
 # Std/Var is unknown
 
-X= np.array([4.7, 4.8, 4.9, 5.3, 5.5, 5.9, 6.0])
+X= np.array([1,2,4,7,9])
 X_mean= X.mean()
 N= X.size
 
-mu_0= 5
+mu_0= 3
 
 X_sd= np.std(X, ddof=1)
 

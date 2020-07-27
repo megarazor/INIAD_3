@@ -8,5 +8,5 @@ print(norm.ppf(0.95))
 # Expected value = "loc", STD = "scale"
 # Find upper ...-pecentile of the pdf of this dist?
 print("N(..., ...^2) pecentile: ", end="")
-print(norm.ppf(0.90, loc=10, scale=1))
+print(norm.ppf(0.90, loc=5, scale=2))
 
