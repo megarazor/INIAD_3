@@ -20,6 +20,14 @@ def controlTCar(command):
         print("*"*15, "Headlights turned white", "*"*15)
     elif command == "turn-off":
         print("*"*15, "Headlights turned off", "*"*15)
+    # Additional features begin
+    elif command == "honk":
+        print("*"*15, "Honking, bjonk bjonk!!", "*"*15)
+    elif command == "play-music":
+        print("*"*15, "Playing It's everyday bro!", "*"*15)
+    elif command == "stop-music":
+        print("*"*15, "Music stopped", "*"*15)
+    # End
     else:
         print("*"*15, "Unknown status", "*"*15)
 
