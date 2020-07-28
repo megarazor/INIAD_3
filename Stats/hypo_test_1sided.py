@@ -2,9 +2,9 @@ import numpy as np
 from scipy import stats
 from scipy.stats import t
 
-X= np.array([510, 499, 495, 494, 501])
+X= np.array([6.9, 7.0, 7.3, 7.5, 7.6, 7.9])
 
-mu_0= 500
+mu_0= 7
 avg= X.mean()
 N= X.size
 

@@ -8,12 +8,12 @@ from scipy.stats import norm
 #          group1 is fed with food1, group2 with food2
 #          group2 > group1 ??
 
-avg_1= 15.3
-avg_2= 17.2
-std_1= 2.5
-std_2= 4.3
-N1= 50
-N2= 45
+avg_1= 222.4
+avg_2= 173.3
+std_1= 41.0
+std_2= 24.0
+N1= 5
+N2= 6
 
 stat_t= (avg_1 - avg_2) / np.sqrt(std_1 * std_1 / N1 + std_2 * std_2 / N2)
 m11= pow(std_1, 2) / N1 + pow(std_2, 2) / N2

@@ -1,5 +1,5 @@
 import numpy as np
-x= np.array([60, 72, 91, 51, 45, 88, 67, 26])
-y= np.array([84, 75, 52, 60, 33, 97, 69, 72])
+x= np.array([56,67,78,89,95])
+y= np.array([47,53,63,82,89])
 
 print(np.corrcoef(x, y)[0, 1])

@@ -8,8 +8,8 @@ from scipy.stats import norm
 #          group1 is fed with food1, group2 with food2
 #          group2 > group1 ??
 
-X1= np.array([6, 5, 10])
-X2= np.array([12, 16, 22, 8, 17])
+X1= np.array([253, 224, 258, 186, 191])
+X2= np.array([194, 154, 176, 176, 180, 160])
 
 stat_t, p= stats.ttest_ind(X1, X2, equal_var=False)
 p= p/2
