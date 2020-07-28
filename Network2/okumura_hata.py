@@ -15,14 +15,14 @@ def loss_okuhata(hb, f, hm, d, city_size):
 def increased_loss(hb, d_inceased_times):
     return (44.9 - 6.55 * math.log10(hb)) * math.log10(d_inceased_times)
 
-hb= 100 # [m]
+hb= 190 # [m]
 f= 800 # [MHz]
 hm= 1.5 # [m]
-d= 10 # [km]
+d= 1 # [km]
 city_size= 0 # 0 for small-medium, 1 for big
 
 loss= loss_okuhata(hb, f, hm, d, city_size)
-print("Loss [dB] =", loss)
+print("Loss [dB] =", loss_okuhata(hb, f, hm, 10, city_size) - loss_okuhata(hb, f, hm, 1, city_size) )
 
 d_inceased_times= 10
 hb= 100

@@ -9,9 +9,9 @@ def meandelayMM1(pkt_per_sec, avg_pkt_len, lnk_cap):
     return T * 1000
 
 # Find mean delay time:
-pkt_per_sec= 800
+pkt_per_sec= 1500
 avg_pkt_len= 500
-lnk_cap= 6
+lnk_cap= 8
 T= meandelayMM1(pkt_per_sec, avg_pkt_len, lnk_cap)
 print("T in [ms]:", T)
 
