@@ -1,0 +1,51 @@
+Object counting/garbage collector:
+
+Object counting: couting the number of pointers poiting to an object, to know if it is in use or not.
+
+XDECREF:
+When --count == 0: dealloc
+
+Function name:
+
+    >>> s = "aasd"
+    >>> len(s)
+    4
+    >>> len= 2
+    >>> len(s)
+    Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+    TypeError: 'int' object is not callable
+    >>> del len
+    >>> len
+    <built-in function len>
+
+Name resolution:
+Code to read: ceval.c, line 2573
+
+	>>> import dis
+	>>> x = "asasf"
+	>>> def f(x):
+	...     return len(x)
+	...
+	>>> f(x)
+	5
+	>>> dis.dis(f)
+	  2           0 LOAD_GLOBAL              0 (len)
+				  2 LOAD_FAST                0 (x)
+				  4 CALL_FUNCTION            1
+				  6 RETURN_VALUE
+	>>>
+
+a = [1, 2, 3]
+x= len(a)
+case (LOAD_GLOBAL) ("len") <- dis
+dict lookup		python dict
+f -> f_globals -> hash
+f -> f_builtins
+LOAD_FAST 
+LOAD_GLOBAL
+if cache hits?
+
+X = MyClass()	
+X.a				
+X.b	= 1			X["b"] = 1 #using dict
