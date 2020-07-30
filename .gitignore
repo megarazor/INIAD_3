@@ -2,7 +2,7 @@
 *.edgelist
 
 # ArchitectureTheory2 class
-ArchitectureTheory2
+cpython-master
 
 # Virtual environment files #
 heroku_env
