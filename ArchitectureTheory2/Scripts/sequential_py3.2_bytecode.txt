@@ -1,0 +1,71 @@
+ 10           0 LOAD_CONST               1 (1)
+              3 LOAD_CONST               2 (2)
+              6 LOAD_CONST               3 (3)
+              9 BUILD_LIST               3
+             12 STORE_FAST               0 (a1)
+
+ 11          15 LOAD_CONST               4 (4)
+             18 LOAD_CONST               5 (5)
+             21 LOAD_CONST               6 (6)
+             24 BUILD_LIST               3
+             27 STORE_FAST               1 (a2)
+
+ 12          30 LOAD_CONST               9 (1000000)
+             33 STORE_FAST               2 (m)
+
+ 13          36 LOAD_CONST               8 (50)
+             39 STORE_FAST               3 (N)
+
+ 15          42 SETUP_LOOP             113 (to 158)
+             45 LOAD_GLOBAL              0 (range)
+             48 LOAD_CONST               5 (5)
+             51 LOAD_FAST                3 (N)
+             54 LOAD_CONST               1 (1)
+             57 BINARY_ADD
+             58 LOAD_CONST               5 (5)
+             61 CALL_FUNCTION            3
+             64 GET_ITER
+        >>   65 FOR_ITER                89 (to 157)
+             68 STORE_FAST               4 (i)
+
+ 16          71 LOAD_GLOBAL              1 (time)
+             74 LOAD_ATTR                1 (time)
+             77 CALL_FUNCTION            0
+             80 STORE_FAST               5 (start_time)
+
+ 18          83 LOAD_GLOBAL              2 (f)
+             86 LOAD_FAST                0 (a1)
+             89 LOAD_FAST                4 (i)
+             92 LOAD_FAST                2 (m)
+             95 BINARY_MULTIPLY
+             96 CALL_FUNCTION            2
+             99 POP_TOP
+
+ 19         100 LOAD_GLOBAL              2 (f)
+            103 LOAD_FAST                1 (a2)
+            106 LOAD_FAST                4 (i)
+            109 LOAD_FAST                2 (m)
+            112 BINARY_MULTIPLY
+            113 CALL_FUNCTION            2
+            116 POP_TOP
+
+ 21         117 LOAD_GLOBAL              1 (time)
+            120 LOAD_ATTR                1 (time)
+            123 CALL_FUNCTION            0
+            126 STORE_FAST               6 (end_time)
+
+ 22         129 LOAD_GLOBAL              3 (print)
+            132 LOAD_CONST               2 (2)
+            135 LOAD_FAST                4 (i)
+            138 BINARY_MULTIPLY
+            139 LOAD_FAST                2 (m)
+            142 BINARY_MULTIPLY
+            143 LOAD_FAST                6 (end_time)
+            146 LOAD_FAST                5 (start_time)
+            149 BINARY_SUBTRACT
+            150 CALL_FUNCTION            2
+            153 POP_TOP
+            154 JUMP_ABSOLUTE           65
+        >>  157 POP_BLOCK
+        >>  158 LOAD_CONST               0 (None)
+            161 RETURN_VALUE

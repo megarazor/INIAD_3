@@ -1,11 +1,12 @@
 Object counting/garbage collector:
 
-Object counting: couting the number of pointers poiting to an object, to know if it is in use or not.
+Object counting: 
+	couting the number of pointers poiting to an object, to know if it is in use or not.
 
 XDECREF:
-When --count == 0: dealloc
+	When --count == 0: dealloc
 
-Function name:
+	Function name:
 
     >>> s = "aasd"
     >>> len(s)
@@ -20,32 +21,101 @@ Function name:
     <built-in function len>
 
 Name resolution:
-Code to read: ceval.c, line 2573
+	Code to read: ceval.c, line 2573
 
-	>>> import dis
-	>>> x = "asasf"
-	>>> def f(x):
-	...     return len(x)
+		>>> import dis
+		>>> x = "asasf"
+		>>> def f(x):
+		...     return len(x)
+		...
+		>>> f(x)
+		5
+		>>> dis.dis(f)
+		  2           0 LOAD_GLOBAL              0 (len)
+					  2 LOAD_FAST                0 (x)
+					  4 CALL_FUNCTION            1
+					  6 RETURN_VALUE
+		>>>
+
+	a = [1, 2, 3]
+	x= len(a)
+	case (LOAD_GLOBAL) ("len") <- dis
+	dict lookup		python dict
+	f -> f_globals -> hash
+	f -> f_builtins
+	LOAD_FAST 
+	LOAD_GLOBAL
+	if cache hits?
+
+	X = MyClass()	
+	X.a				
+	X.b	= 1			X["b"] = 1 #using dict
+
+	Sample code:
+	
+	>>> class My:
+	...     def __init__(s):
+	...             s.a= 1
 	...
-	>>> f(x)
-	5
-	>>> dis.dis(f)
-	  2           0 LOAD_GLOBAL              0 (len)
-				  2 LOAD_FAST                0 (x)
-				  4 CALL_FUNCTION            1
-				  6 RETURN_VALUE
-	>>>
+	>>> x= My()
+	>>> x
+	<__main__.My object at 0x00F26C88>
+	>>> while True: x.b = 2
+	...
+	
+	Result (assembly):
+	
+	  1           0 LOAD_BUILD_CLASS                                                                                                      2 LOAD_CONST               0 (<code object My at 0x00000278CC6BD030, file "class.py", line 1>)                          4 LOAD_CONST               1 ('My')                                                                                     6 MAKE_FUNCTION            0                                                                                            8 LOAD_CONST               1 ('My')                                                                                    10 CALL_FUNCTION            2                                                                                           12 STORE_NAME               0 (My)                                                                                                                                                                                                   4          14 LOAD_NAME                0 (My)                                                                                      16 CALL_FUNCTION            0                                                                                           18 STORE_NAME               1 (x)                                                                                                                                                                                                    5     >>   20 LOAD_CONST               2 (1)                                                                                       22 LOAD_NAME                1 (x)                                                                                       24 STORE_ATTR               2 (b)                                                                                       26 JUMP_ABSOLUTE           20                                                                                           28 LOAD_CONST               3 (None)                                                                                    30 RETURN_VALUE                                                                                                                                                                                                                    Disassembly of <code object My at 0x00000278CC6BD030, file "class.py", line 1>:                                           1           0 LOAD_NAME                0 (__name__)                                                                                 2 STORE_NAME               1 (__module__)                                                                               4 LOAD_CONST               0 ('My')                                                                                     6 STORE_NAME               2 (__qualname__)                                                                                                                                                                                         2           8 LOAD_CONST               1 (<code object __init__ at 0x00000278CC6BAF50, file "class.py", line 2>)                   10 LOAD_CONST               2 ('My.__init__')                                                                           12 MAKE_FUNCTION            0                                                                                           14 STORE_NAME               3 (__init__)                                                                                16 LOAD_CONST               3 (None)                                                                                    18 RETURN_VALUE                                                                                                                                                                                                                    Disassembly of <code object __init__ at 0x00000278CC6BAF50, file "class.py", line 2>:                                     3           0 LOAD_CONST               1 (1)                                                                                        2 LOAD_FAST                0 (s)                                                                                        4 STORE_ATTR               0 (a)                                                                                        6 LOAD_CONST               0 (None)                                                                                     8 RETURN_VALUE 
+	** Code to read: dictobject.c, line 4916
+	
+	To generate bytecode from file: python -m dis <filename>
+	
+Garbage collecting:
+	Collects only memory objects in need. The rest are garbage.
+	Addressing is not fair. Paging takes a lot of resources.
+	
+Len: bytecode of this:
+	def f(xs):
+		return len(xs)
 
-a = [1, 2, 3]
-x= len(a)
-case (LOAD_GLOBAL) ("len") <- dis
-dict lookup		python dict
-f -> f_globals -> hash
-f -> f_builtins
-LOAD_FAST 
-LOAD_GLOBAL
-if cache hits?
+	xs = [1, 2, 3]
+	while True: f(xs)
+	
+	** Code to read: ceval.c, line 3537
+	
+Find bottle neck in thread1.py, thread2.py
+	Stack: >	python310_d.dll!_PyCOND_WAIT_MS(_PyCOND_T * cv, _RTL_CRITICAL_SECTION * cs, unsigned long ms) Line 171	C
+	-> take_gil function is the bottle neck
+	Global Interpreter Lock (GIL)
+	
+	condvar.h:
+		PyCOND_WAIT_MS(...)
+		PyMUTEX_LOCK(cs);
+		
+		
+Tool for testing GIL thrashing without compiling?
+Tool for checking OS behavior, Opcode?
 
-X = MyClass()	
-X.a				
-X.b	= 1			X["b"] = 1 #using dict
+CSV runtime data for:
+	- Python 2.6.4, single-thread
+	- Python 2.6.4, 2-thread, single-core CPU
+	- Python 2.6.4, 2-thread, multicore CPU
+	
+	- Python 3.2, single-thread
+	- Python 3.2, 2-thread, single-core CPU
+	- Python 3.2, 2-thread, multicore CPU
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
