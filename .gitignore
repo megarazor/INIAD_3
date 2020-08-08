@@ -3,6 +3,8 @@
 
 # ArchitectureTheory2 class
 cpython-master
+Python-3.2
+Python-2.6.4
 
 # Virtual environment files #
 heroku_env
