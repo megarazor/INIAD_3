@@ -1,0 +1,23 @@
+name: ds2020
+channels:
+  - plotly
+  - desilinguist
+  - conda-forge
+  - defaults
+dependencies:
+  - beautifulsoup4=4.9.1
+  - gensim=3.8.0
+  - librosa=0.6.1
+  - numba=0.48.0
+  - numpy=1.18.1
+  - numpy-base=1.18.1
+  - pandas=1.0.3
+  - pip=20.0.2
+  - scikit-learn=0.22.1
+  - scipy=1.4.1
+  - tensorflow=2.1.0
+  - tensorflow-base=2.1.0
+  - tensorflow-estimator=2.1.0
+  - pip:
+    - gym==0.17.2
+    - pillow==7.0.0
