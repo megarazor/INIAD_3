@@ -1,3 +1,6 @@
+# Java
+*.class
+
 # DL data dog_cat
 ds2020/DL/dl-02/data
 
