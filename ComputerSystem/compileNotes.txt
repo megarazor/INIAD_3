@@ -1,0 +1,9 @@
+Open MP:
+gcc -fopenmp -o product_omp product_omp.c
+
+MPI: 
+mpicc -o vote vote.c 
+mpirun -np 1 vote
+
+ACC:
+gcc -fopenacc -o product_acc_explicit product_acc_explicit.c 
