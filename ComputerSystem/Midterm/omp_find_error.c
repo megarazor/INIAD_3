@@ -2,19 +2,21 @@
 #include <stdlib.h>
 #include <omp.h>
 
-const int MAX = 1000;
+const int MAX = 10;
 
 int main(int argc, char const *argv[]){
-    printf("Bruh\n");
     int n = atoi(argv[1]);
     int A[MAX], B[MAX], C[MAX];
     for (int i = 0; i < n; i++){
-        B[i] = i%MAX;
+        B[i] = (i+1)%MAX;
         C[i] = (i+1)%MAX;
     }
+    // Begin Section A
+    #pragma omp parallel for num_threads(2)
     for (int i = 0; i < n; i++){
         A[i] = B[i] * C[i];
         printf("%d\n", A[i]);
     }
+    // End Section A
     return 0;
 }

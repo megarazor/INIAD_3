@@ -1,45 +1,44 @@
-#include <math.h>
-#include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 
-void example(int n, int *a, int *b, int *y) {
-    int i;
-    #pragma omp parallel
-    {
-        #pragma omp for
-        for (i=0; i < n-1; i++)
-            b[i] = (a[i] + a[i+1]);
-        #pragma omp single
-        for (i=0; i < n-1; i++)
-            y[i] = y[i+1] + b[i];
-    }
-}
+const int MAX = 50;
+int Sum;
 
-int main(){
-    int* a, *b, *y;
-    int n= 5;
-    a= malloc(sizeof(int) * 5);
-    b= malloc(sizeof(int) * 5);
-    y= malloc(sizeof(int) * 5);
-    for (int i= 0; i < 5; i++){
-        a[i]= rand() % 10;
-        b[i]= 0;
-        y[i]= 0;
-    }
+int main(int argc, char const *argv[]){
+int n = atoi(argv[1]);
+  int A[MAX], B[MAX], C[MAX];
 
-    example(n, a, b, y);
-    printf("a: ");
-    for (int i= 0; i < 5; i++){
-        printf("%d ", a[i]);
-    }
-    printf("\nb: ");
-    for (int i= 0; i < 5; i++){
-        printf("%d ", b[i]);
-    }
-    printf("\ny: ");
-    for (int i= 0; i < 5; i++){
-        printf("%d ", y[i]);
-    }
-    printf("\n");
+  for (int i = 0; i < n; i++){
+    B[i] = (i+1)%MAX;
+    C[i] = (i+1)%MAX;
+  }
+	
+// Begin Section B
+#pragma omp parallel
+{
+ #pragma omp sections
+ {
+  #pragma omp section
+  {
+  for (int i = 0; i < n; i++){
+    A[i] = B[i] * C[i];
+    printf("%d ", i);
+  }
+  printf("\n");
+  }
+  #pragma omp section
+  {
+  for (int i = 0; i < n; i++){
+    A[i] = B[i] + C[i];
+    printf("%d ", i);
+  }
+  printf("\n");
+  }
+	
+ }// End of sections structure 
+}//End of parallel strucutre
+// End Section B
+	
+  return 0;
 }
