@@ -1,3 +1,9 @@
+# Exercise4B big files
+refsnp_chrX.csv
+refsnp_chrY.csv
+TEST_X.db
+TESTINDEX.db
+
 # Java
 *.class
 
