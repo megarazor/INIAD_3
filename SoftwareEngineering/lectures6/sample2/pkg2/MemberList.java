@@ -1,40 +1,29 @@
 package sample2.pkg2;
 
+import java.util.Map;
+import java.util.HashMap;
 import sample2.pkg1.Member;
-import java.util.List;
-import java.util.ArrayList;
-
 
 public class MemberList {
-    private List<Member> lst;
+    private final Map<String, Member> members;
 
-    public MemberList(){
-        lst= new ArrayList<Member>();
-    }    
-
-    public void add(Member member){
-        lst.add(member);
+    public MemberList() {
+        members = new HashMap<String, Member>();
     }
 
-    public Member get(String id){
-        for (Member m : lst){
-            if (m.getId() == id){
-                return m;
-            }
-        }
-        return null;
+    public void add(Member member) {
+        members.put(member.getId(), member);
     }
 
-    public void remove(String id){
-        for (Member m : lst){
-            if (m.getId() == id){
-                int i= lst.indexOf(m);
-                lst.remove(i);
-            }
-        }
+    public Member get(String id) {
+        return members.get(id);
     }
 
-    public int count(){
-        return lst.size();
+    public void remove(String id) {
+        members.remove(id);
+    }
+
+    public int count() {
+        return members.size();
     }
 }
