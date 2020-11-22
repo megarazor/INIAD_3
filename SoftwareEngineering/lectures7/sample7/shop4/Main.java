@@ -1,8 +1,11 @@
 package sample7.shop4;
 
+import java.io.File;
+
 public class Main{
     public static void main(String[] args) {
-        Shop shop = new Shop(new ConsoleLogger());
+        File file= new File("log.txt");
+        Shop shop = new Shop(new FileLogger(file));
         Seller tocho = new Seller("Yamada", "Tocho");
         Seller coop = new Seller("Yoshida", "Coop");
         Customer taro = new Customer("Taro");
