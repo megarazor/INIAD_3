@@ -1,0 +1,4 @@
+Room,Capacity,Floor
+Hall,400,1F
+Lecture room,200,2F
+Large rooms,80,"3,4F"
