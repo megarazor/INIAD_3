@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WidgetsTest</string>
+    <string name="rabbit">Rabbit</string>
+    <string name="panda">Panda</string>
+    <string name="cat">Cat</string>
+    <string name="selectOne">Select One</string>
+    <string name="apply">Apply</string>
+</resources>
