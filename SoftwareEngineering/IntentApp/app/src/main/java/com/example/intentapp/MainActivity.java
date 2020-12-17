@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickNextButton(View view){
+//        Intent a= new Intent(this, SubActivity.class);
         Intent i= new Intent(this, SubActivity.class);
         startActivity(i);
     }

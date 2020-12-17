@@ -50,11 +50,7 @@ cache= [-1] * 10 # Initial cache stores nothing
 LRU= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] # Last used information of values in cache. 0 is most recent, 9 is last recent
 
 for _ in range(trial_count):
-    if contents != set():
-        n= random.sample(contents, 1)[0]
-    else:
-        break
-    
+    n= random.sample(contents, 1)[0]
     if n in cache:
         hit_count+= 1
     else:
