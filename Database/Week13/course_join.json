@@ -1,0 +1,8 @@
+[
+{"course_id" : "J1", "course_name" : "Database", "lecturer" : "Tanaka", "credit" : 4},
+{"course_id" : "J2", "course_name" : "Theory of Computation", "lecturer" : "Sato", "credit" : 2},
+{"course_id" : "J3", "course_name" : "Hardware", "lecturer" : "Kobayashi", "credit" : 6},
+{"course_id" : "J4", "course_name" : "Database", "lecturer" : "Ohno", "credit" : 4},
+{"course_id" : "J5", "course_name" : "OS", "lecturer" : "Saito", "credit" : 5},
+{"course_id" : "J6", "course_name" : "AI", "lecturer" : "Tanaka", "credit" : 3}
+]

@@ -1,0 +1,7 @@
+[
+{"student_id" : "S1", "name" : "Yamada", "city" : "Kyoto", "age" : 19},
+{"student_id" : "S2", "name" : "Suzuki", "city" : "Osaka", "age" : 20},
+{"student_id" : "S3", "name" : "Kojima", "city" : "Nara", "age" : 22},
+{"student_id" : "S4", "name" : "Takeda", "city" : "Kyoto", "age" : 18},
+{"student_id" : "S5", "name" : "Takagi", "city" : "Kobe", "age" : 21}
+]
